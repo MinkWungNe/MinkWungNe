@@ -1,9 +1,9 @@
 - 👋 Hi, I’m @MinkWungNe
 - 👀 I’m interested in Game Development 
-- 🌱 I’m currently learning C,C++,C#
+- 🌱 I’m currently learning C,C++,C#, Java, LuaRoblox
 - 💞️ I’m looking to collaborate on making games
 - 📫 How to reach me ...
-- 😄 Pronouns: ...
+- 😄 Pronouns: hee/hee
 - ⚡ Fun fact: ...
 
 <!---
