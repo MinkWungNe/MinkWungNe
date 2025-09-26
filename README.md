@@ -1,4 +1,4 @@
-# 👋 Hi, I'm MinkWung
+# 👋 Hi, I'm MinkWungNe
 
 I'm **Lê Lương Minh Quân**, a Computer Science student (born in 2005) who enjoys coding, learning new technologies, and experimenting with different projects.  
 This GitHub is where I keep track of my learning journey, assignments, and small side projects.
@@ -26,12 +26,17 @@ This GitHub is where I keep track of my learning journey, assignments, and small
 
 ---
 
-## 📫 Connect with Me
-- GitHub: [@MinkWung](https://github.com/MinkWung)  
-- (You can add email / LinkedIn later if you want)  
+## 📫 Connect with Me - ![Profile Views](https://komarev.com/ghpvc/?username=MinkWung&style=flat-square)
+- Email: [leluongminhquan@gmail.com](mailto:leluongminhquan@gmail.com)
+- GitHub: [@MinkWungNe](https://github.com/MinkWungNe)
+- LinkedIn: [@MinkWung](https://www.linkedin.com/in/mink-wung-8881aa318/)
 
 ---
 
-![Profile Views](https://komarev.com/ghpvc/?username=MinkWung&style=flat-square)  
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MinkWung&layout=compact)  
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MinkWung&show_icons=true&theme=default)
+<div style="display: flex; justify-content: space-between; width: 100%;">
+
+  <img src="https://github-readme-stats.vercel.app/api?username=MinkWungNe&theme=blue-green&show_icons=true&hide_border=true&count_private=true" alt="GitHub Stats" style="width: 51%;" />
+
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MinkWungNe&theme=blue-green&show_icons=true&hide_border=true&layout=compact" alt="Top Langs" style="width: 45.5%;" />
+
+</div>
