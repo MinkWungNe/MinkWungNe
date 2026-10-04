@@ -173,7 +173,7 @@
     <!-- Box 4: Profile Views -->
     <g transform="translate(208, 110)">
       <rect width="176" height="46" class="stat-box" />
-      <text id="stat-views" x="88" y="18" class="stat-val">8</text>
+      <text id="stat-views" x="88" y="18" class="stat-val">11</text>
       <text x="88" y="34" class="stat-lbl">PROFILE VIEWS</text>
     </g>
 
