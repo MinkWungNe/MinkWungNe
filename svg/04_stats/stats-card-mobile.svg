@@ -1,0 +1,216 @@
+<svg width="100%" height="280" viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Clip path for stats shine -->
+    <clipPath id="stats-clip-mob">
+      <rect width="400" height="260" rx="6" />
+    </clipPath>
+
+    <!-- 2D Anime Cel-shaded Shine Gradient -->
+    <linearGradient id="shine-grad-stats-mob" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="2%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="3%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="14%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="97%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="98%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <style><![CDATA[
+      .shine-light {
+        animation: shine-scroll-mob 4.5s cubic-bezier(0.25, 1, 0.4, 1) infinite;
+        pointer-events: none;
+      }
+      .hud-bg {
+        fill: rgba(18, 12, 35, 0.55);
+        rx: 6px;
+      }
+      .hud-border {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+        rx: 6px;
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .hud-divider {
+        stroke: rgba(255, 255, 255, 0.2);
+        stroke-width: 1;
+        stroke-dasharray: 4 3;
+      }
+      .hud-tag {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        fill: #d28cff;
+      }
+      .hud-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        fill: #ffffff;
+      }
+      .stat-box {
+        stroke: rgba(176, 38, 255, 0.6);
+        stroke-width: 1;
+        fill: rgba(26, 16, 51, 0.65);
+        rx: 4px;
+      }
+      .stat-val {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        fill: #ffffff;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .stat-lbl {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        fill: #c0caf5;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .status-pill {
+        stroke: #805cf6;
+        stroke-width: 1;
+        fill: rgba(128, 92, 246, 0.2);
+        rx: 3px;
+      }
+      .status-pill-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 7.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .lang-lbl {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 9.5px;
+        font-weight: 600;
+        fill: #c0caf5;
+      }
+      .dot {
+        r: 3.5px;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      @keyframes shine-scroll-mob {
+        0% {
+          transform: translateX(-350px) skewX(-20deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        35% {
+          transform: translateX(520px) skewX(-20deg);
+          opacity: 1;
+        }
+        40%, 100% {
+          transform: translateX(520px) skewX(-20deg);
+          opacity: 0;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g transform="translate(10, 10)">
+    <!-- Main HUD Background & Frame -->
+    <rect width="400" height="260" class="hud-bg" />
+    <rect width="400" height="260" class="hud-border" />
+
+    <!-- Top Header Row -->
+    <text x="16" y="20" class="hud-tag">// TELEMETRY HUD // METRICS</text>
+    <text x="16" y="36" class="hud-title">ACTIVITY OVERVIEW • MINKWUNGNE</text>
+
+    <!-- Status Pill -->
+    <rect x="290" y="14" width="94" height="17" class="status-pill" />
+    <text x="337" y="22" class="status-pill-text">AUTO SYNC</text>
+
+    <line x1="16" y1="46" x2="384" y2="46" class="hud-divider" />
+
+    <!-- 2x2 Telemetry Grid (Width 176 each, height 46, gap 16) -->
+    <!-- Box 1: Total Commits -->
+    <g transform="translate(16, 56)">
+      <rect width="176" height="46" class="stat-box" />
+      <text id="stat-commits" x="88" y="18" class="stat-val">150+</text>
+      <text x="88" y="34" class="stat-lbl">TOTAL COMMITS</text>
+    </g>
+
+    <!-- Box 2: Total Repositories -->
+    <g transform="translate(208, 56)">
+      <rect width="176" height="46" class="stat-box" />
+      <text id="stat-repos" x="88" y="18" class="stat-val">7</text>
+      <text x="88" y="34" class="stat-lbl">REPOSITORIES</text>
+    </g>
+
+    <!-- Box 3: Total Stars -->
+    <g transform="translate(16, 110)">
+      <rect width="176" height="46" class="stat-box" />
+      <text id="stat-stars" x="88" y="18" class="stat-val">★ ACTIVE</text>
+      <text x="88" y="34" class="stat-lbl">STAR ECOSYSTEM</text>
+    </g>
+
+    <!-- Box 4: Profile Views -->
+    <g transform="translate(208, 110)">
+      <rect width="176" height="46" class="stat-box" />
+      <text id="stat-views" x="88" y="18" class="stat-val">8</text>
+      <text x="88" y="34" class="stat-lbl">PROFILE VIEWS</text>
+    </g>
+
+    <!-- Language Telemetry Bar (Width 368) -->
+    <g transform="translate(16, 172)">
+      <rect x="0" y="0" width="368" height="7" rx="3.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" />
+      <!-- Segments -->
+      <rect x="0" y="0" width="140" height="7" rx="3.5" fill="#805cf6" />
+      <rect x="141" y="0" width="103" height="7" rx="1.5" fill="#b026ff" />
+      <rect x="245" y="0" width="70" height="7" rx="1.5" fill="#3b82f6" />
+      <rect x="316" y="0" width="33" height="7" rx="1.5" fill="#38bdf8" />
+      <rect x="350" y="0" width="18" height="7" rx="3.5" fill="#e2e8f0" />
+
+      <!-- Legend in 2 rows -->
+      <g transform="translate(0, 20)">
+        <!-- Row 1 -->
+        <circle cx="5" cy="0" class="dot" fill="#805cf6" />
+        <text x="14" y="3" class="lang-lbl">C++ (38%)</text>
+
+        <circle cx="120" cy="0" class="dot" fill="#b026ff" />
+        <text x="129" y="3" class="lang-lbl">Java (28%)</text>
+
+        <circle cx="235" cy="0" class="dot" fill="#3b82f6" />
+        <text x="244" y="3" class="lang-lbl">Python (19%)</text>
+
+        <!-- Row 2 -->
+        <circle cx="65" cy="22" class="dot" fill="#38bdf8" />
+        <text x="74" y="25" class="lang-lbl">C (9%)</text>
+
+        <circle cx="190" cy="22" class="dot" fill="#e2e8f0" />
+        <text x="199" y="25" class="lang-lbl">Other (6%)</text>
+      </g>
+    </g>
+
+    <!-- Shine Overlay -->
+    <g clip-path="url(#stats-clip-mob)">
+      <rect x="0" y="-30" width="50" height="320" fill="url(#shine-grad-stats-mob)" class="shine-light" />
+    </g>
+  </g>
+</svg>

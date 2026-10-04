@@ -1,0 +1,89 @@
+<svg width="100%" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- MASK KHOÉT RỖNG ĐOẠN GIỮA VÀ CÁC ĐẦU BIÊN -->
+    <mask id="cut-projects">
+      <rect width="100%" height="100%" fill="#ffffff" />
+
+      <!-- 1. Khoét đoạn giữa 150px cho chữ và khung viền -->
+      <rect x="calc(50% - 75px)" y="0" width="150" height="40" fill="#000000" />
+
+      <!-- 2. Khoét mép sát chấm tròn cho đường chính (đục 7px) -->
+      <rect x="0" y="0" width="7" height="40" fill="#000000" />
+      <rect x="calc(100% - 7px)" y="0" width="14" height="40" fill="#000000" />
+
+      <!-- 3. Khoét thụt lề thêm 15px (tổng 22px) chỉ cho đường dưới -->
+      <rect x="0" y="24" width="22" height="16" fill="#000000" />
+      <rect x="calc(100% - 22px)" y="24" width="25" height="16" fill="#000000" />
+    </mask>
+
+    <style>
+      .cyber-container {
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .cyber-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.22em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #ffffff;
+      }
+      .line-main {
+        stroke: #ffffff;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      .line-sub {
+        stroke: #ffffff;
+        stroke-width: 1.2;
+        stroke-dasharray: 6 4;
+        opacity: 0.65;
+        animation: cyber-stream 20s linear infinite;
+      }
+      /* KHUNG VIỀN TITLE: Nét đơn mỏng 1px, không nền */
+      .title-box {
+        stroke: #ffffff;
+        stroke-width: 1;
+        fill: none;
+      }
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+      @keyframes cyber-stream {
+        from {
+          stroke-dashoffset: 0;
+        }
+        to {
+          stroke-dashoffset: 220;
+        }
+      }
+    </style>
+  </defs>
+
+  <g class="cyber-container">
+    <!-- LỚP 1: CÁC ĐƯỜNG KẺ CHẠY BÊN DƯỚI (ĐÃ ĐƯỢC KHOÉT RỖNG Ở GIỮA) -->
+    <g mask="url(#cut-projects)">
+      <line x1="0" y1="20" x2="100%" y2="20" class="line-main" />
+      <line x1="0" y1="27" x2="100%" y2="27" class="line-sub" />
+    </g>
+
+    <!-- HAI CHẤM TRÒN CHỐT CHẶN Ở 2 ĐẦU BIÊN -->
+    <circle cx="7" cy="20" r="6" fill="#ffffff" />
+    <circle cx="calc(100% - 7px)" cy="20" r="6" fill="#ffffff" />
+
+    <!-- LỚP 2: KHUNG VIỀN NÉT ĐƠN BAO QUANH TITLE (150px) -->
+    <rect x="calc(50% - 75px)" y="9" width="150" height="25" rx="2" class="title-box" />
+
+    <!-- LỚP 3: CHỮ TITLE NẰM CHÍNH GIỮA KHUNG -->
+    <text x="50%" y="20" class="cyber-title">PROJECTS</text>
+  </g>
+</svg>

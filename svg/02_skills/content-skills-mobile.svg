@@ -1,0 +1,254 @@
+<svg width="100%" height="685" viewBox="0 0 420 685" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Progress bar gradient -->
+    <linearGradient id="bar-grad-mob" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#805cf6" />
+      <stop offset="60%" stop-color="#b026ff" />
+      <stop offset="100%" stop-color="#d28cff" />
+    </linearGradient>
+
+    <!-- Clip paths for individual panel shine -->
+    <clipPath id="panel-clip-top-mob">
+      <rect width="400" height="395" rx="6" />
+    </clipPath>
+    <clipPath id="panel-clip-bot-mob">
+      <rect width="400" height="255" rx="6" />
+    </clipPath>
+
+    <!-- 2D Anime Cel-shaded Shine Gradient -->
+    <linearGradient id="shine-grad-mob" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="2%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="3%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="14%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="97%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="98%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <style><![CDATA[
+      .shine-light {
+        animation: shine-scroll-mob 4.5s cubic-bezier(0.25, 1, 0.4, 1) infinite;
+        pointer-events: none;
+      }
+      .panel-bg {
+        fill: rgba(18, 12, 35, 0.55);
+        rx: 6px;
+      }
+      .panel-border {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+        rx: 6px;
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .panel-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        fill: #d28cff;
+      }
+      .skill-name {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        fill: #ffffff;
+      }
+      .skill-pill {
+        stroke: #805cf6;
+        stroke-width: 1;
+        fill: rgba(128, 92, 246, 0.2);
+        rx: 3px;
+      }
+      .skill-pill-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .meter-track {
+        fill: rgba(255, 255, 255, 0.08);
+        stroke: rgba(255, 255, 255, 0.15);
+        stroke-width: 0.8;
+        rx: 3px;
+      }
+      .meter-fill {
+        fill: url(#bar-grad-mob);
+        rx: 2.5px;
+        filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0.6));
+      }
+      .skill-sub {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 9.5px;
+        fill: #94a3b8;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      @keyframes shine-scroll-mob {
+        0% {
+          transform: translateX(-150px) skewX(-20deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        38% {
+          transform: translateX(550px) skewX(-20deg);
+          opacity: 1;
+        }
+        42%, 100% {
+          transform: translateX(550px) skewX(-20deg);
+          opacity: 0;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- ================= TOP PANEL: PROGRAMMING LANGUAGES (7 ITEMS, HEIGHT 395) ================= -->
+  <g transform="translate(10, 10)">
+    <rect width="400" height="395" class="panel-bg" />
+    <rect width="400" height="395" class="panel-border" />
+    <text x="16" y="24" class="panel-title">// 01. PROGRAMMING LANGUAGES</text>
+    <line x1="16" y1="34" x2="384" y2="34" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 3" />
+
+    <!-- Skill 1: C++ -->
+    <g transform="translate(16, 44)">
+      <text x="0" y="11" class="skill-name">C++</text>
+      <text x="32" y="11" class="skill-sub">• Systems &amp; OOP</text>
+      <rect x="270" y="0" width="90" height="15" class="skill-pill" />
+      <text x="315" y="8" class="skill-pill-text">PROFICIENT // 80%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="288" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 2: C -->
+    <g transform="translate(16, 94)">
+      <text x="0" y="11" class="skill-name">C</text>
+      <text x="20" y="11" class="skill-sub">• Logic &amp; Memory</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 70%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="252" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 3: Java -->
+    <g transform="translate(16, 144)">
+      <text x="0" y="11" class="skill-name">Java</text>
+      <text x="36" y="11" class="skill-sub">• OOP &amp; Collections</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 75%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="270" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 4: Python -->
+    <g transform="translate(16, 194)">
+      <text x="0" y="11" class="skill-name">Python</text>
+      <text x="48" y="11" class="skill-sub">• Scripting &amp; Automation</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 75%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="270" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 5: TypeScript -->
+    <g transform="translate(16, 244)">
+      <text x="0" y="11" class="skill-name">TypeScript</text>
+      <text x="75" y="11" class="skill-sub">• Typed Systems</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 70%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="252" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 6: JavaScript -->
+    <g transform="translate(16, 294)">
+      <text x="0" y="11" class="skill-name">JavaScript</text>
+      <text x="68" y="11" class="skill-sub">• Web &amp; DOM</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 70%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="252" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 7: Dart / Flutter -->
+    <g transform="translate(16, 344)">
+      <text x="0" y="11" class="skill-name">Dart / Flutter</text>
+      <text x="82" y="11" class="skill-sub">• Mobile Apps</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 65%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="234" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Shine Overlay -->
+    <g clip-path="url(#panel-clip-top-mob)">
+      <rect x="0" y="-30" width="50" height="455" fill="url(#shine-grad-mob)" class="shine-light" />
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM PANEL: TECHNICAL SKILLS & TOOLS (COMPACT HEIGHT 255) ================= -->
+  <g transform="translate(10, 420)">
+    <rect width="400" height="255" class="panel-bg" />
+    <rect width="400" height="255" class="panel-border" />
+    <text x="16" y="24" class="panel-title">// 02. TECHNICAL SKILLS &amp; TOOLS</text>
+    <line x1="16" y1="34" x2="384" y2="34" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 3" />
+
+    <!-- Skill 1: DSA -->
+    <g transform="translate(16, 44)">
+      <text x="0" y="11" class="skill-name">Data Structures &amp; Algorithms</text>
+      <rect x="270" y="0" width="90" height="15" class="skill-pill" />
+      <text x="315" y="8" class="skill-pill-text">PROFICIENT // 80%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="288" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 2: Git & GitHub CLI -->
+    <g transform="translate(16, 94)">
+      <text x="0" y="11" class="skill-name">Git &amp; GitHub CLI</text>
+      <rect x="270" y="0" width="90" height="15" class="skill-pill" />
+      <text x="315" y="8" class="skill-pill-text">PROFICIENT // 80%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="288" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 3: AI-Assisted -->
+    <g transform="translate(16, 144)">
+      <text x="0" y="11" class="skill-name">AI-Assisted Engineering</text>
+      <rect x="270" y="0" width="90" height="15" class="skill-pill" />
+      <text x="315" y="8" class="skill-pill-text">ADVANCED // 85%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="306" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Skill 4: OOP & Architecture -->
+    <g transform="translate(16, 194)">
+      <text x="0" y="11" class="skill-name">OOP &amp; Software Design</text>
+      <rect x="250" y="0" width="110" height="15" class="skill-pill" />
+      <text x="305" y="8" class="skill-pill-text">INTERMEDIATE // 75%</text>
+      <rect x="0" y="18" width="360" height="6" class="meter-track" />
+      <rect x="0" y="18" width="270" height="6" class="meter-fill" />
+    </g>
+
+    <!-- Shine Overlay -->
+    <g clip-path="url(#panel-clip-bot-mob)">
+      <rect x="0" y="-30" width="50" height="315" fill="url(#shine-grad-mob)" class="shine-light" />
+    </g>
+  </g>
+</svg>

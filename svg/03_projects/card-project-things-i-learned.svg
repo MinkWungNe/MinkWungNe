@@ -1,0 +1,188 @@
+<svg width="100%" height="205" viewBox="0 0 430 205" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- CLIP PATH TO KEEP SHINE WITHIN CARD BORDER -->
+    <clipPath id="card-border-clip-1">
+      <rect width="418" height="193" rx="6" />
+    </clipPath>
+
+    <!-- 2D ANIME CEL-SHADED SHINE BAND (HOYOVERSE STYLE) -->
+    <linearGradient id="shine-sweep-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="2%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="3%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="14%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="97%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="98%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <style><![CDATA[
+      .card-bg {
+        fill: rgba(32, 16, 72, 0.55);
+        rx: 6px;
+      }
+      .project-frame {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+        rx: 6px;
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .shine-light {
+        animation: shine-scroll 4.5s cubic-bezier(0.25, 1, 0.4, 1) infinite;
+      }
+      .header-line {
+        stroke: rgba(255, 255, 255, 0.25);
+        stroke-width: 1;
+        stroke-dasharray: 4 3;
+      }
+      .card-tag {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        fill: #d28cff;
+      }
+      .card-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        fill: #ffffff;
+      }
+      .badge-box {
+        stroke: rgba(176, 38, 255, 0.65);
+        stroke-width: 1;
+        fill: rgba(26, 16, 51, 0.65);
+        rx: 3px;
+      }
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        fill: #ffffff;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .sub-desc {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 11.5px;
+        fill: #c0caf5;
+        opacity: 0.9;
+      }
+      .status-pill {
+        stroke: #805cf6;
+        stroke-width: 1;
+        fill: rgba(128, 92, 246, 0.2);
+        rx: 3px;
+      }
+      .status-pill-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .btn-bar {
+        stroke: #b026ff;
+        stroke-width: 1;
+        fill: rgba(176, 38, 255, 0.12);
+        rx: 4px;
+      }
+      .btn-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      /* SHINY SCROLL ANIMATION */
+      @keyframes shine-scroll {
+        0% {
+          transform: translateX(-350px) skewX(-20deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        35% {
+          transform: translateX(550px) skewX(-20deg);
+          opacity: 1;
+        }
+        40%, 100% {
+          transform: translateX(550px) skewX(-20deg);
+          opacity: 0;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g class="project-card-container">
+    <g transform="translate(6, 6)">
+      <!-- Card Background (Dark translucent, no glow) -->
+      <rect width="418" height="193" class="card-bg" />
+
+      <!-- Main Card Border Frame (Hollow stroke with neon pulse) -->
+      <rect width="418" height="193" class="project-frame" />
+
+      <!-- Top Tag & Title -->
+      <text x="18" y="24" class="card-tag">// 01. FEATURED ARCHIVE</text>
+      <text x="18" y="44" class="card-title">THINGS_I_LEARNED</text>
+
+      <!-- Status Pill -->
+      <rect x="290" y="16" width="112" height="20" class="status-pill" />
+      <text x="346" y="26" class="status-pill-text">LIVE ON GITHUB</text>
+
+      <line x1="18" y1="54" x2="400" y2="54" class="header-line" />
+
+      <!-- Tech Badges -->
+      <g transform="translate(18, 64)">
+        <rect x="0" y="0" width="76" height="22" class="badge-box" />
+        <text x="38" y="11" class="badge-text">Markdown</text>
+
+        <rect x="84" y="0" width="84" height="22" class="badge-box" />
+        <text x="126" y="11" class="badge-text">CS Theory</text>
+
+        <rect x="176" y="0" width="56" height="22" class="badge-box" />
+        <text x="204" y="11" class="badge-text">DSA</text>
+
+        <rect x="240" y="0" width="60" height="22" class="badge-box" />
+        <text x="270" y="11" class="badge-text">Notes</text>
+      </g>
+
+      <!-- Description -->
+      <text x="18" y="110" class="sub-desc">Comprehensive CS knowledge repository documenting</text>
+      <text x="18" y="127" class="sub-desc">coursework, algorithm solutions &amp; core notes.</text>
+
+      <!-- Interactive Action Button Bar -->
+      <g transform="translate(18, 146)">
+        <rect width="382" height="30" class="btn-bar" />
+        <text x="191" y="15" class="btn-text">&#x2197; VIEW REPO: MinkWungNe/Things_I_Learned</text>
+      </g>
+
+      <!-- SHINY LIGHT EFFECT OVERLAY -->
+      <g clip-path="url(#card-border-clip-1)">
+        <rect x="0" y="-20" width="50" height="235" fill="url(#shine-sweep-grad-1)" class="shine-light" style="pointer-events: none;" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,255 @@
+<svg width="100%" height="430" viewBox="0 0 900 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for progress bars -->
+    <linearGradient id="bar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#805cf6" />
+      <stop offset="60%" stop-color="#b026ff" />
+      <stop offset="100%" stop-color="#d28cff" />
+    </linearGradient>
+
+    <!-- CLIP PATH FOR TECH PANELS -->
+    <clipPath id="panel-border-clip">
+      <rect width="425" height="405" rx="6" />
+    </clipPath>
+
+    <!-- 2D ANIME CEL-SHADED SHINE BAND (HOYOVERSE STYLE) -->
+    <linearGradient id="shine-sweep-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="2%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="3%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="14%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="97%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="98%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <style><![CDATA[
+      .shine-light {
+        animation: shine-scroll 4.5s cubic-bezier(0.25, 1, 0.4, 1) infinite;
+        pointer-events: none;
+      }
+      .panel-bg {
+        fill: rgba(32, 16, 72, 0.55);
+        rx: 6px;
+      }
+      .panel-frame {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+        rx: 6px;
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .panel-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        fill: #d28cff;
+      }
+      .skill-name {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        fill: #ffffff;
+      }
+      .skill-pill {
+        stroke: #805cf6;
+        stroke-width: 1;
+        fill: rgba(128, 92, 246, 0.2);
+        rx: 3px;
+      }
+      .skill-pill-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .meter-track {
+        fill: rgba(255, 255, 255, 0.08);
+        stroke: rgba(255, 255, 255, 0.15);
+        stroke-width: 0.8;
+        rx: 3px;
+      }
+      .meter-fill {
+        fill: url(#bar-grad);
+        rx: 2.5px;
+        filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0.6));
+      }
+      .skill-sub {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 10px;
+        fill: #94a3b8;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      /* Cel-shaded Sweep Animation for 425px Panel */
+      @keyframes shine-scroll {
+        0% {
+          transform: translateX(-150px) skewX(-20deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        38% {
+          transform: translateX(580px) skewX(-20deg);
+          opacity: 1;
+        }
+        42%, 100% {
+          transform: translateX(580px) skewX(-20deg);
+          opacity: 0;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g class="tech-container">
+    <!-- ================= LEFT COLUMN: PROGRAMMING LANGUAGES ================= -->
+    <g transform="translate(15, 10)">
+      <rect width="425" height="405" class="panel-bg" />
+      <rect width="425" height="405" class="panel-frame" />
+      <text x="20" y="26" class="panel-title">// 01. PROGRAMMING LANGUAGES</text>
+      <line x1="20" y1="36" x2="405" y2="36" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 3" />
+
+      <!-- Skill 1: C++ -->
+      <g transform="translate(20, 48)">
+        <text x="0" y="12" class="skill-name">C++</text>
+        <text x="35" y="12" class="skill-sub">• Systems &amp; OOP</text>
+        <rect x="290" y="0" width="95" height="17" class="skill-pill" />
+        <text x="337" y="9" class="skill-pill-text">PROFICIENT // 80%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="308" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 2: C -->
+      <g transform="translate(20, 98)">
+        <text x="0" y="12" class="skill-name">C</text>
+        <text x="20" y="12" class="skill-sub">• Low-level Logic &amp; Pointers</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 70%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="269" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 3: Java -->
+      <g transform="translate(20, 148)">
+        <text x="0" y="12" class="skill-name">Java</text>
+        <text x="40" y="12" class="skill-sub">• OOP Principles &amp; Design</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 75%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="288" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 4: Python -->
+      <g transform="translate(20, 198)">
+        <text x="0" y="12" class="skill-name">Python</text>
+        <text x="55" y="12" class="skill-sub">• Scripting &amp; Automation</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 75%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="288" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 5: TypeScript -->
+      <g transform="translate(20, 248)">
+        <text x="0" y="12" class="skill-name">TypeScript</text>
+        <text x="82" y="12" class="skill-sub">• Typed Architecture</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 70%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="269" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 6: JavaScript -->
+      <g transform="translate(20, 298)">
+        <text x="0" y="12" class="skill-name">JavaScript</text>
+        <text x="75" y="12" class="skill-sub">• Web &amp; DOM Logic</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 70%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="269" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 7: Dart / Flutter -->
+      <g transform="translate(20, 348)">
+        <text x="0" y="12" class="skill-name">Dart / Flutter</text>
+        <text x="95" y="12" class="skill-sub">• Mobile Applications</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 65%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="250" height="7" class="meter-fill" />
+      </g>
+
+      <!-- SHINY LIGHT EFFECT OVERLAY -->
+      <g clip-path="url(#panel-border-clip)">
+        <rect x="0" y="-30" width="50" height="470" fill="url(#shine-sweep-grad)" class="shine-light" />
+      </g>
+    </g>
+
+    <!-- ================= RIGHT COLUMN: TECHNICAL SKILLS & TOOLS (EQUAL HEIGHT 405) ================= -->
+    <g transform="translate(460, 10)">
+      <rect width="425" height="405" class="panel-bg" />
+      <rect width="425" height="405" class="panel-frame" />
+      <text x="20" y="26" class="panel-title">// 02. TECHNICAL SKILLS &amp; TOOLS</text>
+      <line x1="20" y1="36" x2="405" y2="36" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 3" />
+
+      <!-- Skill 1: DSA -->
+      <g transform="translate(20, 65)">
+        <text x="0" y="12" class="skill-name">Data Structures &amp; Algorithms</text>
+        <rect x="290" y="0" width="95" height="17" class="skill-pill" />
+        <text x="337" y="9" class="skill-pill-text">PROFICIENT // 80%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="308" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 2: Git & GitHub CLI -->
+      <g transform="translate(20, 150)">
+        <text x="0" y="12" class="skill-name">Git &amp; GitHub CLI</text>
+        <rect x="290" y="0" width="95" height="17" class="skill-pill" />
+        <text x="337" y="9" class="skill-pill-text">PROFICIENT // 80%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="308" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 3: AI-Assisted Engineering -->
+      <g transform="translate(20, 235)">
+        <text x="0" y="12" class="skill-name">AI-Assisted Engineering</text>
+        <rect x="295" y="0" width="90" height="17" class="skill-pill" />
+        <text x="340" y="9" class="skill-pill-text">ADVANCED // 85%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="327" height="7" class="meter-fill" />
+      </g>
+
+      <!-- Skill 4: OOP & Software Architecture -->
+      <g transform="translate(20, 320)">
+        <text x="0" y="12" class="skill-name">OOP &amp; Software Design</text>
+        <rect x="270" y="0" width="115" height="17" class="skill-pill" />
+        <text x="327" y="9" class="skill-pill-text">INTERMEDIATE // 75%</text>
+        <rect x="0" y="20" width="385" height="7" class="meter-track" />
+        <rect x="0" y="20" width="288" height="7" class="meter-fill" />
+      </g>
+
+      <!-- SHINY LIGHT EFFECT OVERLAY -->
+      <g clip-path="url(#panel-border-clip)">
+        <rect x="0" y="-30" width="50" height="470" fill="url(#shine-sweep-grad)" class="shine-light" />
+      </g>
+    </g>
+  </g>
+</svg>

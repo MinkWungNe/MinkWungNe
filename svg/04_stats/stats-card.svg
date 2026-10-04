@@ -1,0 +1,220 @@
+<svg width="100%" height="210" viewBox="0 0 900 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- CLIP PATH TO KEEP SHINE WITHIN STATS HUD -->
+    <clipPath id="stats-hud-clip">
+      <rect width="870" height="190" rx="6" />
+    </clipPath>
+
+    <!-- 2D ANIME CEL-SHADED SHINE BAND (HOYOVERSE STYLE) -->
+    <linearGradient id="shine-sweep-grad-stats" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="2%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="3%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="14%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="97%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="98%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <style><![CDATA[
+      .shine-light {
+        animation: shine-scroll-stats 4.5s cubic-bezier(0.25, 1, 0.4, 1) infinite;
+        pointer-events: none;
+      }
+      .hud-bg {
+        fill: rgba(32, 16, 72, 0.55);
+        rx: 6px;
+      }
+      .hud-frame {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+        rx: 6px;
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .hud-divider {
+        stroke: rgba(255, 255, 255, 0.2);
+        stroke-width: 1;
+        stroke-dasharray: 4 3;
+      }
+      .hud-tag {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        fill: #d28cff;
+      }
+      .hud-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        fill: #ffffff;
+      }
+      .stat-box {
+        stroke: rgba(176, 38, 255, 0.6);
+        stroke-width: 1;
+        fill: rgba(26, 16, 51, 0.65);
+        rx: 4px;
+      }
+      .stat-val {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        fill: #ffffff;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .stat-lbl {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        fill: #c0caf5;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .status-pill {
+        stroke: #805cf6;
+        stroke-width: 1;
+        fill: rgba(128, 92, 246, 0.2);
+        rx: 3px;
+      }
+      .status-pill-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        fill: #e0d4fc;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .lang-lbl {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        fill: #c0caf5;
+      }
+      .dot {
+        r: 4px;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      /* SHINY SCROLL ANIMATION FOR WIDE STATS HUD */
+      @keyframes shine-scroll-stats {
+        0% {
+          transform: translateX(-400px) skewX(-20deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        38% {
+          transform: translateX(1050px) skewX(-20deg);
+          opacity: 1;
+        }
+        42%, 100% {
+          transform: translateX(1050px) skewX(-20deg);
+          opacity: 0;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g class="stats-container">
+    <g transform="translate(15, 10)">
+      <!-- Main HUD Background (Dark translucent, no glow) -->
+      <rect width="870" height="190" class="hud-bg" />
+
+      <!-- Main HUD Frame (Hollow stroke with neon pulse) -->
+      <rect width="870" height="190" class="hud-frame" />
+
+      <!-- Top Header Row -->
+      <text x="24" y="24" class="hud-tag">// TELEMETRY HUD // GITHUB CODE METRICS</text>
+      <text x="24" y="44" class="hud-title">ACTIVITY OVERVIEW • MINKWUNGNE</text>
+
+      <!-- Status Pill -->
+      <rect x="715" y="16" width="130" height="20" class="status-pill" />
+      <text x="780" y="26" class="status-pill-text">AUTOMATED SYNC</text>
+
+      <line x1="24" y1="56" x2="846" y2="56" class="hud-divider" />
+
+      <!-- 4 Telemetry Stat Metrics (Width 195 each, gap 15) -->
+      <!-- Box 1: Total Commits -->
+      <g transform="translate(24, 68)">
+        <rect width="192" height="56" class="stat-box" />
+        <text id="stat-commits" x="96" y="22" class="stat-val">150+</text>
+        <text x="96" y="42" class="stat-lbl">TOTAL COMMITS</text>
+      </g>
+
+      <!-- Box 2: Total Repositories -->
+      <g transform="translate(231, 68)">
+        <rect width="192" height="56" class="stat-box" />
+        <text id="stat-repos" x="96" y="22" class="stat-val">7</text>
+        <text x="96" y="42" class="stat-lbl">REPOSITORIES</text>
+      </g>
+
+      <!-- Box 3: Total Stars -->
+      <g transform="translate(438, 68)">
+        <rect width="192" height="56" class="stat-box" />
+        <text id="stat-stars" x="96" y="22" class="stat-val">★ ACTIVE</text>
+        <text x="96" y="42" class="stat-lbl">STAR ECOSYSTEM</text>
+      </g>
+
+      <!-- Box 4: Profile Views -->
+      <g transform="translate(645, 68)">
+        <rect width="201" height="56" class="stat-box" />
+        <text id="stat-views" x="100" y="22" class="stat-val">8</text>
+        <text x="100" y="42" class="stat-lbl">PROFILE VIEWS</text>
+      </g>
+
+      <!-- Language Telemetry Bar -->
+      <g transform="translate(24, 138)">
+        <!-- Multi-segment bar (Width 822, Height 8) -->
+        <rect x="0" y="0" width="822" height="8" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" />
+        <!-- Segments -->
+        <rect x="0" y="0" width="310" height="8" rx="4" fill="#805cf6" />
+        <rect x="312" y="0" width="230" height="8" rx="2" fill="#b026ff" />
+        <rect x="544" y="0" width="160" height="8" rx="2" fill="#3b82f6" />
+        <rect x="706" y="0" width="75" height="8" rx="2" fill="#38bdf8" />
+        <rect x="783" y="0" width="39" height="8" rx="4" fill="#e2e8f0" />
+
+        <!-- Legend -->
+        <g transform="translate(0, 24)">
+          <circle cx="6" cy="0" class="dot" fill="#805cf6" />
+          <text x="16" y="4" class="lang-lbl">C++ (38%)</text>
+
+          <circle cx="150" cy="0" class="dot" fill="#b026ff" />
+          <text x="160" y="4" class="lang-lbl">Java (28%)</text>
+
+          <circle cx="290" cy="0" class="dot" fill="#3b82f6" />
+          <text x="300" y="4" class="lang-lbl">Python (19%)</text>
+
+          <circle cx="430" cy="0" class="dot" fill="#38bdf8" />
+          <text x="440" y="4" class="lang-lbl">C (9%)</text>
+
+          <circle cx="530" cy="0" class="dot" fill="#e2e8f0" />
+          <text x="540" y="4" class="lang-lbl">Other (6%)</text>
+        </g>
+      </g>
+
+      <!-- SHINY LIGHT EFFECT OVERLAY -->
+      <g clip-path="url(#stats-hud-clip)">
+        <rect x="0" y="-30" width="50" height="250" fill="url(#shine-sweep-grad-stats)" class="shine-light" style="pointer-events: none;" />
+      </g>
+    </g>
+  </g>
+</svg>

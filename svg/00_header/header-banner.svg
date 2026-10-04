@@ -1,0 +1,153 @@
+<svg width="100%" height="150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- MASK KHOET RONG CHO CAC DUONG KE -->
+    <mask id="cut-banner">
+      <!-- Mac dinh nen trang: hien thi tat ca -->
+      <rect width="100%" height="100%" fill="#ffffff" />
+
+      <!-- 1. Khoet doan giua cho TOP STATUS BADGE (y tu 0 den 40) -->
+      <rect x="calc(50% - 140px)" y="0" width="280" height="40" fill="#000000" />
+
+      <!-- 2. Khoet mep ngoai sat cham tron cho duong ke tren (cx=7) -->
+      <rect x="0" y="0" width="7" height="40" fill="#000000" />
+      <rect x="calc(100% - 7px)" y="0" width="40" height="40" fill="#000000" />
+
+      <!-- 3. Khoet mep ngoai sat cham tron cho duong net dut duoi (cx=40) -->
+      <rect x="0" y="110" width="40" height="40" fill="#000000" />
+      <rect x="calc(100% - 40px)" y="110" width="60" height="40" fill="#000000" />
+    </mask>
+
+    <style><![CDATA[
+      /* 1. LOP KHUNG VA NANG LUONG CHINH: CYBER PURPLE AURORA */
+      .cyber-container {
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+
+      .cyber-banner-box {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+      }
+
+      .line-accent {
+        stroke: #ffffff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+      }
+
+      /* 2. DUONG NET DUT DUOI: DONG CHAY FIBER-OPTIC */
+      .line-dotted {
+        stroke: #ffffff;
+        stroke-width: 1.2;
+        stroke-dasharray: 6 5;
+        opacity: 0.85;
+        animation: cyber-stream 20s linear infinite;
+      }
+
+      .title-name {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        letter-spacing: 0.28em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #ffffff;
+      }
+
+      .sub-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #c0caf5;
+        opacity: 0.95;
+      }
+
+      /* 3. STATUS BADGE: NHIP BEACON TELEMETRY */
+      .status-group {
+        animation: status-beacon 3.2s ease-in-out infinite;
+      }
+
+      .status-box {
+        stroke: #ffffff;
+        stroke-width: 1.2;
+        fill: none;
+      }
+
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 700;
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #ffffff;
+      }
+
+      /* HIEU UNG ANH SANG NEON TIM CO GIONG DO LON PHAN TRANG */
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      @keyframes status-beacon {
+        0%, 100% {
+          opacity: 0.85;
+        }
+        50% {
+          opacity: 1;
+          filter: drop-shadow(0 0 3px #961ddc);
+        }
+      }
+
+      @keyframes cyber-stream {
+        from {
+          stroke-dashoffset: 0;
+        }
+        to {
+          stroke-dashoffset: 220;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g class="cyber-container">
+    <!-- LOP DUONG KE CHAY SUOT CHIEU NGANG DUOC DIEU KHIEN BANG MASKING -->
+    <g mask="url(#cut-banner)">
+      <!-- Duong net lien o tren -->
+      <line x1="0" y1="20" x2="100%" y2="20" class="line-accent" />
+      <!-- Duong net dut o duoi -->
+      <line x1="0" y1="126" x2="100%" y2="126" class="line-dotted" />
+    </g>
+
+    <!-- HAI CHAM TRON CHOT CHAN CHO DUONG TREN (x = 7 va x = 100% - 7) -->
+    <circle cx="7" cy="20" r="6" fill="#ffffff" />
+    <circle cx="calc(100% - 7px)" cy="20" r="6" fill="#ffffff" />
+
+    <!-- TOP STATUS BADGE (NAM O DOAN GIUA DA DUOC KHOET RONG) -->
+    <g class="status-group">
+      <rect x="calc(50% - 140px)" y="10" width="280" height="20" rx="3" class="status-box" />
+      <text x="50%" y="20" class="badge-text">STATUS: ONLINE // CONTINUOUS LEARNING</text>
+    </g>
+
+    <!-- MAIN HERO FRAME -->
+    <rect x="calc(50% - 220px)" y="42" width="440" height="70" rx="4" class="cyber-banner-box" />
+
+    <!-- HERO TEXT -->
+    <text x="50%" y="67" class="title-name">MINKWUNGNE</text>
+    <text x="50%" y="90" class="sub-title">SOFTWARE ENGINEERING • COMPUTER SCIENCE</text>
+
+    <!-- HAI CHAM TRON CHOT CHAN CHO DUONG NET DUT DUOI (x = 40 va x = 100% - 40) -->
+    <circle cx="40" cy="126" r="3" fill="#ffffff" />
+    <circle cx="calc(100% - 40px)" cy="126" r="3" fill="#ffffff" />
+  </g>
+</svg>

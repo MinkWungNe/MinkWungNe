@@ -1,0 +1,135 @@
+<svg width="100%" height="150" viewBox="0 0 420 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- MASK KHOET RONG CHO CAC DUONG KE -->
+    <mask id="cut-banner-mobile">
+      <rect width="100%" height="100%" fill="#ffffff" />
+      <!-- Khoet doan giua cho TOP STATUS BADGE (x: 105 den 315) -->
+      <rect x="110" y="0" width="200" height="35" fill="#000000" />
+      <!-- Khoet mep ngoai sat cham tron cho duong tren -->
+      <rect x="0" y="0" width="7" height="35" fill="#000000" />
+      <rect x="413" y="0" width="10" height="35" fill="#000000" />
+      <!-- Khoet mep ngoai sat cham tron cho duong duoi -->
+      <rect x="0" y="110" width="30" height="40" fill="#000000" />
+      <rect x="390" y="110" width="30" height="40" fill="#000000" />
+    </mask>
+
+    <style><![CDATA[
+      .cyber-container {
+        animation: cyber-purple-aurora 3s ease-in-out infinite;
+      }
+      .cyber-banner-box {
+        stroke: #ffffff;
+        stroke-width: 1.5;
+        fill: none;
+      }
+      .line-accent {
+        stroke: #ffffff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+      }
+      .line-dotted {
+        stroke: #ffffff;
+        stroke-width: 1.2;
+        stroke-dasharray: 6 5;
+        opacity: 0.85;
+        animation: cyber-stream 20s linear infinite;
+      }
+      .title-name {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 800;
+        font-size: 21px;
+        letter-spacing: 0.22em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #ffffff;
+      }
+      .sub-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 600;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #c0caf5;
+        opacity: 0.95;
+      }
+      .status-group {
+        animation: status-beacon 3.2s ease-in-out infinite;
+      }
+      .status-box {
+        stroke: #ffffff;
+        stroke-width: 1.2;
+        fill: none;
+      }
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", monospace, sans-serif;
+        font-weight: 700;
+        font-size: 8.5px;
+        letter-spacing: 0.16em;
+        text-anchor: middle;
+        dominant-baseline: central;
+        fill: #ffffff;
+      }
+
+      @keyframes cyber-purple-aurora {
+        0%, 100% {
+          filter: drop-shadow(0 0 1px #805cf6) 
+                  drop-shadow(0 0 3px rgba(150, 38, 255, 0.6));
+        }
+        50% {
+          filter: drop-shadow(0 0 1.5px #ffffff) 
+                  drop-shadow(0 0 4px #6c29e7) 
+                  drop-shadow(0 0 5.5px rgba(125, 92, 246, 0.94));
+        }
+      }
+
+      @keyframes status-beacon {
+        0%, 100% {
+          opacity: 0.85;
+        }
+        50% {
+          opacity: 1;
+          filter: drop-shadow(0 0 3px #961ddc);
+        }
+      }
+
+      @keyframes cyber-stream {
+        from {
+          stroke-dashoffset: 0;
+        }
+        to {
+          stroke-dashoffset: 220;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <g class="cyber-container">
+    <!-- Lines with Mask -->
+    <g mask="url(#cut-banner-mobile)">
+      <line x1="0" y1="20" x2="420" y2="20" class="line-accent" />
+      <line x1="0" y1="126" x2="420" y2="126" class="line-dotted" />
+    </g>
+
+    <!-- Boundary Dots -->
+    <circle cx="7" cy="20" r="5" fill="#ffffff" />
+    <circle cx="413" cy="20" r="5" fill="#ffffff" />
+
+    <!-- Status Badge -->
+    <g class="status-group">
+      <rect x="110" y="10" width="200" height="20" rx="3" class="status-box" />
+      <text x="210" y="20" class="badge-text">STATUS: ONLINE // LEARNING</text>
+    </g>
+
+    <!-- Main Frame -->
+    <rect x="45" y="40" width="330" height="72" rx="4" class="cyber-banner-box" />
+
+    <!-- Text -->
+    <text x="210" y="65" class="title-name">MINKWUNGNE</text>
+    <text x="210" y="88" class="sub-title">SOFTWARE ENGINEERING • CS</text>
+
+    <!-- Bottom Dots -->
+    <circle cx="30" cy="126" r="3" fill="#ffffff" />
+    <circle cx="390" cy="126" r="3" fill="#ffffff" />
+  </g>
+</svg>
