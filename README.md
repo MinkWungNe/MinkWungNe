@@ -2,10 +2,12 @@
 <!-- HERO HEADER                                -->
 <!-- ========================================== -->
 <p align="center">
-  <picture>
-    <source media="(max-width: 768px)" srcset="./svg/00_header/header-banner-mobile.svg">
-    <img src="./svg/00_header/header-banner.svg" width="100%" alt="Header Banner" />
-  </picture>
+  <a href="https://github.com/MinkWungNe">
+    <picture>
+      <source media="(max-width: 768px)" srcset="./svg/00_header/header-banner-mobile.svg">
+      <img src="./svg/00_header/header-banner.svg" width="100%" alt="Header Banner" />
+    </picture>
+  </a>
 </p>
 
 <p align="center">
@@ -31,14 +33,18 @@
 <!-- SECTION 1: ABOUT ME                        -->
 <!-- ========================================== -->
 <p align="center">
-  <img src="./svg/sections/section-about.svg" width="100%" alt="About Me Divider" />
+  <a href="#stay">
+    <img src="./svg/sections/section-about.svg" width="100%" alt="About Me Divider" />
+  </a>
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(max-width: 768px)" srcset="./svg/01_aboutme/content-about-mobile.svg">
-    <img src="./svg/01_aboutme/content-about.svg" width="100%" alt="About Me Dossier" />
-  </picture>
+  <a href="#stay">
+    <picture>
+      <source media="(max-width: 768px)" srcset="./svg/01_aboutme/content-about-mobile.svg">
+      <img src="./svg/01_aboutme/content-about.svg" width="100%" alt="About Me Dossier" />
+    </picture>
+  </a>
 </p>
 
 
@@ -46,14 +52,18 @@
 <!-- SECTION 2: SKILLS                          -->
 <!-- ========================================== -->
 <p align="center">
-  <img src="./svg/sections/section-skills.svg" width="100%" alt="Skills Divider" />
+  <a href="#stay">
+    <img src="./svg/sections/section-skills.svg" width="100%" alt="Skills Divider" />
+  </a>
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(max-width: 768px)" srcset="./svg/02_skills/content-skills-mobile.svg">
-    <img src="./svg/02_skills/content-skills.svg" width="100%" alt="Skills Matrix" />
-  </picture>
+  <a href="#stay">
+    <picture>
+      <source media="(max-width: 768px)" srcset="./svg/02_skills/content-skills-mobile.svg">
+      <img src="./svg/02_skills/content-skills.svg" width="100%" alt="Skills Matrix" />
+    </picture>
+  </a>
 </p>
 
 
@@ -61,7 +71,9 @@
 <!-- SECTION 3: PROJECTS                        -->
 <!-- ========================================== -->
 <p align="center">
-  <img src="./svg/sections/section-projects.svg" width="100%" alt="Projects Divider" />
+  <a href="#stay">
+    <img src="./svg/sections/section-projects.svg" width="100%" alt="Projects Divider" />
+  </a>
 </p>
 
 <p align="center">
@@ -84,22 +96,28 @@
 <!-- SECTION 4: STATS                           -->
 <!-- ========================================== -->
 <p align="center">
-  <img src="./svg/sections/section-stats.svg" width="100%" alt="Stats Divider" />
+  <a href="#stay">
+    <img src="./svg/sections/section-stats.svg" width="100%" alt="Stats Divider" />
+  </a>
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(max-width: 768px)" srcset="./svg/04_stats/stats-card-mobile.svg">
-    <img src="./svg/04_stats/stats-card.svg" width="100%" alt="Telemetry HUD Stats" />
-  </picture>
+  <a href="#stay">
+    <picture>
+      <source media="(max-width: 768px)" srcset="./svg/04_stats/stats-card-mobile.svg">
+      <img src="./svg/04_stats/stats-card.svg" width="100%" alt="Telemetry HUD Stats" />
+    </picture>
+  </a>
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake.svg">
-    <img alt="Contribution Snake" src="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg" width="100%">
-  </picture>
+  <a href="#stay">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake.svg">
+      <img alt="Contribution Snake" src="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 
