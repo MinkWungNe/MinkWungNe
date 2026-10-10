@@ -159,7 +159,7 @@
     <!-- Box 2: Total Repositories -->
     <g transform="translate(208, 56)">
       <rect width="176" height="46" class="stat-box" />
-      <text id="stat-repos" x="88" y="18" class="stat-val">6</text>
+      <text id="stat-repos" x="88" y="18" class="stat-val">7</text>
       <text x="88" y="34" class="stat-lbl">REPOSITORIES</text>
     </g>
 
@@ -173,7 +173,7 @@
     <!-- Box 4: Profile Views -->
     <g transform="translate(208, 110)">
       <rect width="176" height="46" class="stat-box" />
-      <text id="stat-views" x="88" y="18" class="stat-val">37</text>
+      <text id="stat-views" x="88" y="18" class="stat-val">42</text>
       <text x="88" y="34" class="stat-lbl">PROFILE VIEWS</text>
     </g>
 
