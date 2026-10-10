@@ -8,10 +8,7 @@ NOTES:
 <!-- HERO HEADER                                -->
 <!-- ========================================== -->
 <p align="center">
-  <a href="https://github.com/MinkWungNe"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/00_header/header-banner-mobile.svg">
-    <img src="./svg/00_header/header-banner.svg" width="100%" alt="Header Banner" />
-  </picture></a>
+  <a href="https://github.com/MinkWungNe"><picture><source media="(max-width: 768px)" srcset="./svg/00_header/header-banner-mobile.svg"><img src="./svg/00_header/header-banner.svg" width="100%" alt="Header Banner" /></picture></a>
 </p>
 
 <p align="center">
@@ -30,10 +27,7 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="#stay"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/01_aboutme/content-about-mobile.svg">
-    <img src="./svg/01_aboutme/content-about.svg" width="100%" alt="About Me Dossier" />
-  </picture></a>
+  <a href="#stay"><picture><source media="(max-width: 768px)" srcset="./svg/01_aboutme/content-about-mobile.svg"><img src="./svg/01_aboutme/content-about.svg" width="100%" alt="About Me Dossier" /></picture></a>
 </p>
 
 
@@ -45,10 +39,7 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="#stay"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/02_skills/content-skills-mobile.svg">
-    <img src="./svg/02_skills/content-skills.svg" width="100%" alt="Skills Matrix" />
-  </picture></a>
+  <a href="#stay"><picture><source media="(max-width: 768px)" srcset="./svg/02_skills/content-skills-mobile.svg"><img src="./svg/02_skills/content-skills.svg" width="100%" alt="Skills Matrix" /></picture></a>
 </p>
 
 
@@ -60,14 +51,8 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="https://github.com/MinkWungNe/Things_I_Learned"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/03_projects/card-project-things-i-learned-mobile.svg">
-    <img src="./svg/03_projects/card-project-things-i-learned.svg" width="418" alt="Things_I_Learned Repo" />
-  </picture></a>
-  <a href="https://github.com/MinkWungNe?tab=repositories"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/03_projects/card-project-labs-mobile.svg">
-    <img src="./svg/03_projects/card-project-labs.svg" width="418" alt="Academic Labs" />
-  </picture></a>
+  <a href="https://github.com/MinkWungNe/Things_I_Learned"><picture><source media="(max-width: 768px)" srcset="./svg/03_projects/card-project-things-i-learned-mobile.svg"><img src="./svg/03_projects/card-project-things-i-learned.svg" width="418" alt="Things_I_Learned Repo" /></picture></a>
+  <a href="https://github.com/MinkWungNe?tab=repositories"><picture><source media="(max-width: 768px)" srcset="./svg/03_projects/card-project-labs-mobile.svg"><img src="./svg/03_projects/card-project-labs.svg" width="418" alt="Academic Labs" /></picture></a>
 </p>
 
 
@@ -79,18 +64,11 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="#stay"><picture>
-    <source media="(max-width: 768px)" srcset="./svg/04_stats/stats-card-mobile.svg">
-    <img src="./svg/04_stats/stats-card.svg" width="100%" alt="Telemetry HUD Stats" />
-  </picture></a>
+  <a href="#stay"><picture><source media="(max-width: 768px)" srcset="./svg/04_stats/stats-card-mobile.svg"><img src="./svg/04_stats/stats-card.svg" width="100%" alt="Telemetry HUD Stats" /></picture></a>
 </p>
 
 <p align="center">
-  <a href="#stay"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake.svg">
-    <img alt="Contribution Snake" src="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg" width="100%">
-  </picture></a>
+  <a href="#stay"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake.svg"><img alt="Contribution Snake" src="https://raw.githubusercontent.com/MinkWungNe/MinkWungNe/output/github-contribution-grid-snake-dark.svg" width="100%"></picture></a>
 </p>
 
 
