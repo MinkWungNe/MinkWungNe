@@ -1,7 +1,8 @@
-<!-------------------- NOTES --------------------!>
- - Những section-divider, thẻ nội dung không có nhiệm vụ chuyển hướng thì bọc bằng thẻ <a href="#stay"> để tránh bấm vào svg và bị chuyển hướng vào nguồn.
- - Những thẻ cần chuyển hướng thì cứ bọc trong thẻ <a> với đường dẫn bình thường.
-<------------------------------------------------->
+<!--
+NOTES:
+- Những section-divider, thẻ nội dung không có nhiệm vụ chuyển hướng thì bọc bằng thẻ <a href="#stay"> để tránh bấm vào svg và bị chuyển hướng vào nguồn.
+- Những thẻ cần chuyển hướng thì cứ bọc trong thẻ <a> với đường dẫn bình thường.
+-->
 
 <!-- ========================================== -->
 <!-- HERO HEADER                                -->
