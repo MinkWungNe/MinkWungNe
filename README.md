@@ -17,18 +17,10 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="mailto:leluongminhquan@gmail.com">
-    <img src="./svg/00_badges/badge-email.svg" width="186" height="41" alt="Email" />
-  </a>
-  <a href="https://www.linkedin.com/in/mink-wung-8881aa318/">
-    <img src="./svg/00_badges/badge-linkedin.svg" width="186" height="41" alt="LinkedIn" />
-  </a>
-  <a href="https://leetcode.com/u/minkwungne/">
-    <img src="./svg/00_badges/badge-leetcode.svg" width="186" height="41" alt="LeetCode" />
-  </a>
-  <a href="https://your-portfolio-or-cv.com">
-    <img src="./svg/00_badges/badge-resume.svg" width="186" height="41" alt="Resume / CV" />
-  </a>
+  <a href="mailto:leluongminhquan@gmail.com"><img src="./svg/00_badges/badge-email.svg" width="186" height="41" alt="Email" /></a>
+  <a href="https://www.linkedin.com/in/mink-wung-8881aa318/"><img src="./svg/00_badges/badge-linkedin.svg" width="186" height="41" alt="LinkedIn" /></a>
+  <a href="https://leetcode.com/u/minkwungne/"><img src="./svg/00_badges/badge-leetcode.svg" width="186" height="41" alt="LeetCode" /></a>
+  <a href="https://your-portfolio-or-cv.com"><img src="./svg/00_badges/badge-resume.svg" width="186" height="41" alt="Resume / CV" /></a>
 </p>
 
 
