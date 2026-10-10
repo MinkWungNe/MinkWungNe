@@ -18,19 +18,16 @@ NOTES:
 
 <p align="center">
   <a href="mailto:leluongminhquan@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+    <img src="./svg/00_badges/badge-email.svg" width="186" height="41" alt="Email" />
   </a>
   <a href="https://www.linkedin.com/in/mink-wung-8881aa318/">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://github.com/MinkWungNe">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+    <img src="./svg/00_badges/badge-linkedin.svg" width="186" height="41" alt="LinkedIn" />
   </a>
   <a href="https://leetcode.com/u/minkwungne/">
-    <img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" />
+    <img src="./svg/00_badges/badge-leetcode.svg" width="186" height="41" alt="LeetCode" />
   </a>
   <a href="https://your-portfolio-or-cv.com">
-    <img src="https://img.shields.io/badge/Resume%2FCV-b026ff?style=for-the-badge&logo=googledocs&logoColor=white" alt="Resume" />
+    <img src="./svg/00_badges/badge-resume.svg" width="186" height="41" alt="Resume / CV" />
   </a>
 </p>
 
