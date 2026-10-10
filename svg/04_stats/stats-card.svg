@@ -156,7 +156,7 @@
       <!-- Box 1: Total Commits -->
       <g transform="translate(24, 68)">
         <rect width="192" height="56" class="stat-box" />
-        <text id="stat-commits" x="96" y="22" class="stat-val">150+</text>
+        <text id="stat-commits" x="96" y="22" class="stat-val">90+</text>
         <text x="96" y="42" class="stat-lbl">TOTAL COMMITS</text>
       </g>
 

@@ -22,6 +22,35 @@ def fetch_profile_views():
         print(f"Error fetching profile views: {e}")
     return None
 
+def fetch_total_commits(headers):
+    try:
+        url = f"https://api.github.com/search/commits?q=author:{USERNAME}"
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode())
+            total = data.get("total_count")
+            if total is not None:
+                return total
+    except Exception as e:
+        print(f"Error fetching commits: {e}")
+    return None
+
+def format_approx_commits(count):
+    if count is None:
+        return None
+    if count < 10:
+        return f"{count}"
+    elif count < 50:
+        step = 5
+    elif count < 200:
+        step = 10
+    elif count < 1000:
+        step = 50
+    else:
+        step = 100
+    approx = (count // step) * step
+    return f"{approx}+"
+
 def fetch_github_stats():
     headers = {"User-Agent": "Mozilla/5.0"}
     token = os.environ.get("GITHUB_TOKEN")
@@ -50,6 +79,11 @@ def fetch_github_stats():
     except Exception as e:
         print(f"Error fetching github stats: {e}")
 
+    # Fetch total commits and format approximately
+    commit_count = fetch_total_commits(headers)
+    if commit_count is not None:
+        stats["commits"] = format_approx_commits(commit_count)
+
     # Fetch profile views
     views = fetch_profile_views()
     if views:
@@ -71,6 +105,14 @@ def update_svg():
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
             
+        # Update commits
+        if "commits" in stats:
+            content = re.sub(
+                r'(<text id="stat-commits"[^>]*>)[^<]*(</text>)',
+                rf'\g<1>{stats["commits"]}\g<2>',
+                content
+            )
+
         # Update repos
         if "repos" in stats:
             content = re.sub(

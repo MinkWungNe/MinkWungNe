@@ -1,3 +1,8 @@
+<!-------------------- NOTES --------------------!>
+ - Những section-divider, thẻ nội dung không có nhiệm vụ chuyển hướng thì bọc bằng thẻ <a href="#stay"> để tránh bấm vào svg và bị chuyển hướng vào nguồn.
+ - Những thẻ cần chuyển hướng thì cứ bọc trong thẻ <a> với đường dẫn bình thường.
+<------------------------------------------------->
+
 <!-- ========================================== -->
 <!-- HERO HEADER                                -->
 <!-- ========================================== -->
@@ -125,6 +130,6 @@
 <!-- FOOTER                                     -->
 <!-- ========================================== -->
 <p align="center">
-  <samp>Crafted with 💜 by <a href="https://github.com/MinkWungNe">MinkWungNe</a> &bull; Powered by Git &amp; Automation</samp>
+  <samp>Crafted with Curiosity by <a href="https://github.com/MinkWungNe">MinkWungNe</a> &bull; Powered by Git &amp; Automation</samp>
   <img src="https://komarev.com/ghpvc/?username=MinkWungNe" width="1" height="1" alt="" />
 </p>
