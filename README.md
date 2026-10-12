@@ -64,7 +64,7 @@ NOTES:
 </p>
 
 <p align="center">
-  <a href="#stay"><picture><source media="(max-width: 768px)" srcset="./svg/04_stats/stats-card-mobile.svg"><img src="./svg/04_stats/stats-card.svg" width="100%" alt="Telemetry HUD Stats" /></picture></a>
+  <a href="#stay"><picture><source media="(max-width: 768px)" srcset="https://github-profile-stats-nine.vercel.app/api/stats?view=mobile"><img src="https://github-profile-stats-nine.vercel.app/api/stats" width="100%" alt="Telemetry HUD Stats" /></picture></a>
 </p>
 
 <p align="center">
