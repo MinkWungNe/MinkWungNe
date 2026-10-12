@@ -1,15 +1,16 @@
 name: Sync Profile Stats
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  # Tạm thời tắt cron tự động hàng ngày để chuyển sang Vercel Real-time Stats
+  # schedule:
+  #   - cron: "0 0 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - "scripts/sync-stats.py"
+  # push:
+  #   branches:
+  #     - main
+  #     - master
+  #   paths:
+  #     - "scripts/sync-stats.py"
 
 jobs:
   update-stats:

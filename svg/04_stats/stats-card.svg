@@ -182,7 +182,8 @@
       </g>
 
       <!-- Language Telemetry Bar -->
-      <g transform="translate(24, 138)">
+      <!-- LANGUAGE_BAR_START -->
+      <g id="language-telemetry" transform="translate(24, 138)">
         <!-- Multi-segment bar (Width 822, Height 8) -->
         <rect x="0" y="0" width="822" height="8" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" />
         <!-- Segments -->
@@ -210,6 +211,7 @@
           <text x="540" y="4" class="lang-lbl">Other (6%)</text>
         </g>
       </g>
+      <!-- LANGUAGE_BAR_END -->
 
       <!-- SHINY LIGHT EFFECT OVERLAY -->
       <g clip-path="url(#stats-hud-clip)">

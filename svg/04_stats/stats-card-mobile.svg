@@ -178,7 +178,8 @@
     </g>
 
     <!-- Language Telemetry Bar (Width 368) -->
-    <g transform="translate(16, 172)">
+    <!-- LANGUAGE_BAR_START -->
+    <g id="language-telemetry" transform="translate(16, 172)">
       <rect x="0" y="0" width="368" height="7" rx="3.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" />
       <!-- Segments -->
       <rect x="0" y="0" width="140" height="7" rx="3.5" fill="#805cf6" />
@@ -207,6 +208,7 @@
         <text x="199" y="25" class="lang-lbl">Other (6%)</text>
       </g>
     </g>
+    <!-- LANGUAGE_BAR_END -->
 
     <!-- Shine Overlay -->
     <g clip-path="url(#stats-clip-mob)">
