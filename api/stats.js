@@ -9,6 +9,26 @@ let cachedLanguages = null;
 let cachedLanguagesExpiry = 0;
 const LANG_CACHE_TTL = 3600 * 1000; // 1 giờ
 
+// Hàm gọi lệnh REST API cho Vercel KV / Upstash Redis
+async function runRedisCommand(url, token, command) {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(command)
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.error('Vercel KV / Redis error:', err);
+  }
+  return null;
+}
+
 function escapeXml(unsafe) {
   return String(unsafe).replace(/[<>&'"]/g, c => {
     switch (c) {
@@ -131,6 +151,7 @@ async function fetchAllStats(headers) {
   let languages = null;
   let rateLimitRemaining = null;
 
+  // Tự động nhận diện biến môi trường Vercel KV hoặc Upstash Redis
   const redisUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
   const redisToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
   const hasRedis = Boolean(redisUrl && redisToken);
@@ -142,17 +163,12 @@ async function fetchAllStats(headers) {
       fetch(`https://api.github.com/search/commits?q=author:${USERNAME}`, { headers })
     ];
 
-    // 1. Tự chủ 100% bằng Redis: gọi trực tiếp song song với GitHub API
+    // 1. Tự chủ 100% bằng Vercel KV / Redis: gọi trực tiếp song song với GitHub API
     let redisPromise = null;
     if (hasRedis) {
-      redisPromise = fetch(`${redisUrl}/incr/profile_views`, {
-        headers: { Authorization: `Bearer ${redisToken}` }
-      }).then(r => r.json()).catch(err => {
-        console.error('Redis counter error:', err);
-        return null;
-      });
+      redisPromise = runRedisCommand(redisUrl, redisToken, ['INCR', 'profile_views']);
     } else {
-      // Chỉ khi chưa cấu hình Redis mới gọi Komarev làm phương án dự phòng
+      // Chỉ khi chưa cấu hình Vercel KV mới gọi Komarev làm phương án dự phòng
       fetchPromises.push(
         fetch(`https://komarev.com/ghpvc/?username=${USERNAME}`, { headers: { 'User-Agent': 'Mozilla/5.0' } })
       );
@@ -190,22 +206,21 @@ async function fetchAllStats(headers) {
       }
     }
 
-    // Xử lý kết quả đếm lượt xem:
+    // Xử lý kết quả đếm lượt xem từ Vercel KV:
     if (hasRedis && redisPromise) {
       const rData = await redisPromise;
       if (rData && typeof rData.result === 'number') {
         let c = rData.result;
+        // Nếu database mới tạo chưa có số mốc (hoặc nhỏ hơn 323), tự khởi tạo về 323
         if (c < 323) {
-          await fetch(`${redisUrl}/set/profile_views/323`, {
-            headers: { Authorization: `Bearer ${redisToken}` }
-          });
+          await runRedisCommand(redisUrl, redisToken, ['SET', 'profile_views', 323]);
           c = 323;
         }
         viewCount = c.toLocaleString();
       }
     }
 
-    // Fallback nếu không có Redis: tính mốc khởi tạo 323 từ Komarev
+    // Fallback nếu không có Vercel KV: tính mốc khởi tạo 323 từ Komarev
     if (!viewCount && viewsRes && viewsRes.status === 'fulfilled' && viewsRes.value.ok) {
       const komarevSvg = await viewsRes.value.text();
       const matches = [...komarevSvg.matchAll(/>([0-9,]+)<\/text>/g)];
@@ -221,17 +236,15 @@ async function fetchAllStats(headers) {
     if (cachedLanguages && now < cachedLanguagesExpiry) {
       languages = cachedLanguages;
     } else if (nonForkRepos.length > 0) {
-      // Thử đọc từ Redis nếu có
+      // Thử đọc từ Vercel KV nếu có
       let redisCachedLangs = null;
       if (hasRedis) {
         try {
-          const rGet = await fetch(`${redisUrl}/get/cached_languages`, {
-            headers: { Authorization: `Bearer ${redisToken}` }
-          });
-          if (rGet.ok) {
-            const data = await rGet.json();
-            if (data.result) {
-              redisCachedLangs = JSON.parse(data.result);
+          const rGet = await runRedisCommand(redisUrl, redisToken, ['GET', 'cached_languages']);
+          if (rGet && rGet.result) {
+            const parsed = typeof rGet.result === 'string' ? JSON.parse(rGet.result) : rGet.result;
+            if (Array.isArray(parsed)) {
+              redisCachedLangs = parsed;
             }
           }
         } catch (e) {}
@@ -281,13 +294,9 @@ async function fetchAllStats(headers) {
           cachedLanguages = items;
           cachedLanguagesExpiry = now + LANG_CACHE_TTL;
 
-          // Lưu vào Redis với TTL 3600s
+          // Lưu vào Vercel KV với TTL 3600s
           if (hasRedis) {
-            fetch(`${redisUrl}/set/cached_languages?EX=3600`, {
-              method: 'POST',
-              headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify(items)
-            }).catch(() => {});
+            runRedisCommand(redisUrl, redisToken, ['SET', 'cached_languages', JSON.stringify(items), 'EX', 3600]).catch(() => {});
           }
         }
       }
