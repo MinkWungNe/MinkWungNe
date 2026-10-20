@@ -124,22 +124,52 @@ async function fetchAllStats(headers) {
   let commitCount = null;
   let viewCount = null;
   let languages = null;
+  let rateLimitRemaining = null;
+
+  const redisUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+  const redisToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  const hasRedis = Boolean(redisUrl && redisToken);
 
   try {
-    const [userRes, reposRes, commitsRes, viewsRes] = await Promise.allSettled([
+    const fetchPromises = [
       fetch(`https://api.github.com/users/${USERNAME}`, { headers }),
       fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100`, { headers }),
-      fetch(`https://api.github.com/search/commits?q=author:${USERNAME}`, { headers }),
-      fetch(`https://komarev.com/ghpvc/?username=${USERNAME}`, { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    ]);
+      fetch(`https://api.github.com/search/commits?q=author:${USERNAME}`, { headers })
+    ];
 
-    if (userRes.status === 'fulfilled' && userRes.value.ok) {
+    // 1. Tự chủ 100% bằng Redis: gọi trực tiếp song song với GitHub API
+    let redisPromise = null;
+    if (hasRedis) {
+      redisPromise = fetch(`${redisUrl}/incr/profile_views`, {
+        headers: { Authorization: `Bearer ${redisToken}` }
+      }).then(r => r.json()).catch(err => {
+        console.error('Redis counter error:', err);
+        return null;
+      });
+    } else {
+      // Chỉ khi chưa cấu hình Redis mới gọi Komarev làm phương án dự phòng
+      fetchPromises.push(
+        fetch(`https://komarev.com/ghpvc/?username=${USERNAME}`, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+      );
+    }
+
+    const results = await Promise.allSettled(fetchPromises);
+    const userRes = results[0];
+    const reposRes = results[1];
+    const commitsRes = results[2];
+    const viewsRes = !hasRedis ? results[3] : null;
+
+    if (userRes && userRes.status === 'fulfilled' && userRes.value.ok) {
       const data = await userRes.value.json();
       reposCount = data.public_repos;
+      const remHeader = userRes.value.headers.get('x-ratelimit-remaining');
+      if (remHeader !== null) {
+        rateLimitRemaining = parseInt(remHeader, 10);
+      }
     }
 
     let nonForkRepos = [];
-    if (reposRes.status === 'fulfilled' && reposRes.value.ok) {
+    if (reposRes && reposRes.status === 'fulfilled' && reposRes.value.ok) {
       const reposData = await reposRes.value.json();
       if (Array.isArray(reposData)) {
         nonForkRepos = reposData.filter(r => !r.fork);
@@ -148,18 +178,36 @@ async function fetchAllStats(headers) {
       }
     }
 
-    if (commitsRes.status === 'fulfilled' && commitsRes.value.ok) {
+    if (commitsRes && commitsRes.status === 'fulfilled' && commitsRes.value.ok) {
       const commitData = await commitsRes.value.json();
       if (commitData.total_count != null) {
         commitCount = formatApproxCommits(commitData.total_count);
       }
     }
 
-    if (viewsRes.status === 'fulfilled' && viewsRes.value.ok) {
+    // Xử lý kết quả đếm lượt xem:
+    if (hasRedis && redisPromise) {
+      const rData = await redisPromise;
+      if (rData && typeof rData.result === 'number') {
+        let c = rData.result;
+        if (c < 323) {
+          await fetch(`${redisUrl}/set/profile_views/323`, {
+            headers: { Authorization: `Bearer ${redisToken}` }
+          });
+          c = 323;
+        }
+        viewCount = c.toLocaleString();
+      }
+    }
+
+    // Fallback nếu không có Redis: tính mốc khởi tạo 323 từ Komarev
+    if (!viewCount && viewsRes && viewsRes.status === 'fulfilled' && viewsRes.value.ok) {
       const komarevSvg = await viewsRes.value.text();
       const matches = [...komarevSvg.matchAll(/>([0-9,]+)<\/text>/g)];
       if (matches.length > 0) {
-        viewCount = matches[matches.length - 1][1];
+        const currentNeViews = parseInt(matches[matches.length - 1][1].replace(/,/g, ''), 10) || 0;
+        const totalCombined = 257 + currentNeViews;
+        viewCount = totalCombined.toLocaleString();
       }
     }
 
@@ -206,7 +254,7 @@ async function fetchAllStats(headers) {
     console.error('Error fetching stats:', err);
   }
 
-  return { reposCount, starsCount, commitCount, viewCount, languages };
+  return { reposCount, starsCount, commitCount, viewCount, languages, rateLimitRemaining };
 }
 
 module.exports = async function handler(req, res) {
@@ -227,7 +275,7 @@ module.exports = async function handler(req, res) {
     ...(token && { Authorization: `token ${token}` })
   };
 
-  const { reposCount, starsCount, commitCount, viewCount, languages } = await fetchAllStats(headers);
+  const { reposCount, starsCount, commitCount, viewCount, languages, rateLimitRemaining } = await fetchAllStats(headers);
 
   // Điền 4 chỉ số chính
   if (commitCount) {
@@ -254,7 +302,20 @@ module.exports = async function handler(req, res) {
     });
   }
 
+  // Cơ chế Adaptive Caching tự thích ứng theo hạn ngạch GitHub API
+  let cacheAge = 5; // Mặc định 5s: cực kỳ mượt mà, người xem F5 là thấy ngay
+  if (rateLimitRemaining !== null && !isNaN(rateLimitRemaining)) {
+    if (rateLimitRemaining <= 1000) {
+      cacheAge = 120; // Hạn ngạch sắp cạn: bảo vệ tối đa 2 phút
+    } else if (rateLimitRemaining <= 2500) {
+      cacheAge = 30;  // Lưu lượng tăng cao (> 1000 views/h): siết về 30s
+    } else {
+      cacheAge = 5;   // Lưu lượng bình thường: 5s real-time
+    }
+  }
+
   res.setHeader('Content-Type', 'image/svg+xml; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=30, s-maxage=30, stale-while-revalidate=60');
+  res.setHeader('Cache-Control', `public, max-age=${cacheAge}, s-maxage=${cacheAge}, stale-while-revalidate=${cacheAge * 2}`);
+  res.setHeader('X-Adaptive-Cache-Age', `${cacheAge}s`);
   return res.status(200).send(svgContent);
 };

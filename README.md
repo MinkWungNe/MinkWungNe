@@ -77,5 +77,4 @@ NOTES:
 <!-- ========================================== -->
 <p align="center">
   <samp>Crafted with Curiosity by <a href="https://github.com/MinkWungNe">MinkWungNe</a> &bull; Powered by Git &amp; Automation</samp>
-  <img src="https://komarev.com/ghpvc/?username=MinkWungNe" width="1" height="1" alt="" />
 </p>
