@@ -4,6 +4,11 @@ const path = require('path');
 const USERNAME = 'MinkWungNe';
 const PALETTE = ['#805cf6', '#b026ff', '#3b82f6', '#38bdf8', '#e2e8f0'];
 
+// Bộ đệm ngôn ngữ trong bộ nhớ (tự động làm mới mỗi 1 tiếng)
+let cachedLanguages = null;
+let cachedLanguagesExpiry = 0;
+const LANG_CACHE_TTL = 3600 * 1000; // 1 giờ
+
 function escapeXml(unsafe) {
   return String(unsafe).replace(/[<>&'"]/g, c => {
     switch (c) {
@@ -211,43 +216,80 @@ async function fetchAllStats(headers) {
       }
     }
 
-    // Tự động thu thập tỷ số ngôn ngữ lập trình từ tất cả public repos
-    if (nonForkRepos.length > 0) {
-      const langResponses = await Promise.allSettled(
-        nonForkRepos.map(r => fetch(r.languages_url, { headers }).then(res => res.json()))
-      );
-
-      const langTotals = {};
-      for (const res of langResponses) {
-        if (res.status === 'fulfilled' && typeof res.value === 'object' && res.value !== null) {
-          for (const [lang, bytes] of Object.entries(res.value)) {
-            langTotals[lang] = (langTotals[lang] || 0) + bytes;
+    // Tự động thu thập tỷ số ngôn ngữ lập trình từ tất cả public repos (có bộ đệm 1 giờ)
+    const now = Date.now();
+    if (cachedLanguages && now < cachedLanguagesExpiry) {
+      languages = cachedLanguages;
+    } else if (nonForkRepos.length > 0) {
+      // Thử đọc từ Redis nếu có
+      let redisCachedLangs = null;
+      if (hasRedis) {
+        try {
+          const rGet = await fetch(`${redisUrl}/get/cached_languages`, {
+            headers: { Authorization: `Bearer ${redisToken}` }
+          });
+          if (rGet.ok) {
+            const data = await rGet.json();
+            if (data.result) {
+              redisCachedLangs = JSON.parse(data.result);
+            }
           }
-        }
+        } catch (e) {}
       }
 
-      const sortedLangs = Object.entries(langTotals).sort((a, b) => b[1] - a[1]);
-      const totalBytes = sortedLangs.reduce((sum, [, bytes]) => sum + bytes, 0);
+      if (redisCachedLangs && Array.isArray(redisCachedLangs)) {
+        languages = redisCachedLangs;
+        cachedLanguages = redisCachedLangs;
+        cachedLanguagesExpiry = now + LANG_CACHE_TTL;
+      } else {
+        // Chỉ gọi GitHub languages_url khi cache hết hạn
+        const langResponses = await Promise.allSettled(
+          nonForkRepos.map(r => fetch(r.languages_url, { headers }).then(res => res.json()))
+        );
 
-      if (totalBytes > 0) {
-        const top4 = sortedLangs.slice(0, 4);
-        const otherBytes = sortedLangs.slice(4).reduce((sum, [, bytes]) => sum + bytes, 0);
-
-        const items = top4.map(([name, bytes]) => ({
-          name,
-          pct: Math.round((bytes / totalBytes) * 100),
-          bytes
-        }));
-
-        if (otherBytes > 0) {
-          items.push({
-            name: 'Other',
-            pct: Math.round((otherBytes / totalBytes) * 100),
-            bytes: otherBytes
-          });
+        const langTotals = {};
+        for (const res of langResponses) {
+          if (res.status === 'fulfilled' && typeof res.value === 'object' && res.value !== null) {
+            for (const [lang, bytes] of Object.entries(res.value)) {
+              langTotals[lang] = (langTotals[lang] || 0) + bytes;
+            }
+          }
         }
 
-        languages = items;
+        const sortedLangs = Object.entries(langTotals).sort((a, b) => b[1] - a[1]);
+        const totalBytes = sortedLangs.reduce((sum, [, bytes]) => sum + bytes, 0);
+
+        if (totalBytes > 0) {
+          const top4 = sortedLangs.slice(0, 4);
+          const otherBytes = sortedLangs.slice(4).reduce((sum, [, bytes]) => sum + bytes, 0);
+
+          const items = top4.map(([name, bytes]) => ({
+            name,
+            pct: Math.round((bytes / totalBytes) * 100),
+            bytes
+          }));
+
+          if (otherBytes > 0) {
+            items.push({
+              name: 'Other',
+              pct: Math.round((otherBytes / totalBytes) * 100),
+              bytes: otherBytes
+            });
+          }
+
+          languages = items;
+          cachedLanguages = items;
+          cachedLanguagesExpiry = now + LANG_CACHE_TTL;
+
+          // Lưu vào Redis với TTL 3600s
+          if (hasRedis) {
+            fetch(`${redisUrl}/set/cached_languages?EX=3600`, {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify(items)
+            }).catch(() => {});
+          }
+        }
       }
     }
   } catch (err) {

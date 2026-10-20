@@ -1,4 +1,5 @@
 {
+  "regions": ["sin1"],
   "functions": {
     "api/stats.js": {
       "includeFiles": "svg/04_stats/**"
